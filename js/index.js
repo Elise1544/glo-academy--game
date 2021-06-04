@@ -20,23 +20,23 @@ function game() {
 
   function getResult() {
     let userNumber;
-    while ((userTryAmount !== TRY_AMOUNT) && ((userInput != null) || (userNumber !== number))) {
+    if ((userTryAmount !== TRY_AMOUNT) && ((userInput != null) || (userNumber !== number))) {
       userInput = prompt('Угадай число от 1 до 100');
       userNumber = parseInt(userInput);
-      userTryAmount++;
       if ((!isNum(userNumber)) && (userInput !== null)) {
-        alert(`Введи число, осталось попыток ${TRY_AMOUNT - userTryAmount}`);
+        alert(`Введи число!`);
         getResult();
       } else if (userNumber > number) {
+        userTryAmount++;
         alert(`Загаданное число меньше, осталось попыток ${TRY_AMOUNT - userTryAmount}`);
         getResult();
       } else if (userNumber < number) {
+        userTryAmount++;
         alert(`Загаданное число больше, осталось попыток ${TRY_AMOUNT - userTryAmount}`);
         getResult();
       } else if (userNumber === number) {
         alert('Поздравляю, Вы угадали!!!');
       }
-      return;
     }
   }
 
@@ -47,7 +47,6 @@ function game() {
     anotherGame = confirm('Попытки закончились, хотите сыграть еще?');
   } else if (userInput == null) {
     alert('Игра окончена');
-    anotherGame = confirm('Хотели бы сыграть еще?');
   } else {
     anotherGame = confirm('Хотели бы сыграть еще?');
   }
