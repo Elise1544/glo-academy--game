@@ -16,7 +16,7 @@ function isNum(num) {
 function getResult() {
   let userInput;
   let userNumber;
-  while ((userInput != null) || (userNumber !== number)) {
+  if ((userInput != null) || (userNumber !== number)) {
     userInput = prompt('Угадай число от 1 до 100');
     userNumber = parseInt(userInput);
     if ((!isNum(userNumber)) && (userInput !== null)) {
@@ -30,10 +30,9 @@ function getResult() {
       getResult();
     } else if (userNumber === number) {
       alert('Поздравляю, Вы угадали!!!');
-    } else if (userInput == null) {
-      alert('Игра окончена');
     }
-    return;
+  } else if (userInput == null) {
+    alert('Игра окончена');
   }
 }
 
